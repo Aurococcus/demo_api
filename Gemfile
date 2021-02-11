@@ -36,3 +36,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "faker", "~> 2.16"
+
+gem "jsonapi-serializer", "~> 2.1"

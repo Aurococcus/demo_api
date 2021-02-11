@@ -1,13 +1,18 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: :show
 
-  def show
-    render json: @article
-  end
-
   def index
     @articles = Article.all
-    render json: @articles, include: [:author]
+    options = { include: [:author] }
+    render json: ArticleSerializer.new(
+      @articles.includes(:author),
+      options
+    ).serializable_hash
+  end
+
+  def show
+    options = { include: [:author] }
+    render json: ArticleSerializer.new(@article, options).serializable_hash
   end
 
   private
